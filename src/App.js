@@ -30,7 +30,7 @@ class App extends Component {
   }
 
   connect() {
-    const client = new W3CWebSocket('ws://localhost:8080/', 'echo-protocol');
+    const client = new W3CWebSocket(`ws://${window.location.hostname}:8080/`, 'echo-protocol');
 
     client.onerror = () => {
         console.log('Connection Error');

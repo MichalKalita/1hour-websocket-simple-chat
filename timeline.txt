@@ -3,3 +3,4 @@ Created react app 20:43
 Completed form for send message, works locally 20:51
 Created websocket server, sending message to server and broadcast 20:19
 Implement reconnecting 20:32
+Fix bug, client connecting to host address, 21:38
