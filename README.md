@@ -1,3 +1,12 @@
+# Simple chat - whole app created in one hour
+
+Start client - `yarn start`
+
+Start server - `node src/server.js`
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
