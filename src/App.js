@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import { w3cwebsocket as W3CWebSocket } from 'websocket';
 
 const styles = {
   message: {
@@ -17,31 +18,41 @@ class App extends Component {
     }
 
     this.sendMessage = this.sendMessage.bind(this)
+    this.connect = this.connect.bind(this)
+  }
 
-    var W3CWebSocket = require('websocket').w3cwebsocket;
+  componentDidMount() {
+    this.connect()
+  }
 
+  componentWillUnmount() {
+    clearInterval(this.connectTimeout)
+  }
+
+  connect() {
     const client = new W3CWebSocket('ws://localhost:8080/', 'echo-protocol');
 
-    client.onerror = function() {
+    client.onerror = () => {
         console.log('Connection Error');
     };
 
-    client.onopen = function() {
+    client.onopen = () => {
         console.log('WebSocket Client Connected');
     };
 
-    client.onclose = function() {
+    client.onclose = () => {
         console.log('echo-protocol Client Closed');
+        this.connectTimeout = setTimeout(this.connect, 3 * 1000);
     };
 
-    client.onmessage = function(e) {
+    client.onmessage = e => {
         if (typeof e.data === 'string') {
             console.log("Received: '" + e.data + "'");
             this.setState({
               messages: [...this.state.messages, e.data]
             })
         }
-    }.bind(this);
+    };
     this.client = client
   }
 
