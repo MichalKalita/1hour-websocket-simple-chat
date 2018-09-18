@@ -1,2 +1,4 @@
 Start 20:40 - 2018/09/18
 Created react app 20:43
+Completed form for send message, works locally 20:51
+Created websocket server, sending message to server and broadcast 20:19
